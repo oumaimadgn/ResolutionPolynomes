@@ -1,0 +1,59 @@
+<div class="input-container">
+  <!-- Input Field -->
+  <label for="inputField">Entrer un polynome :</label>
+  <div class="input-with-button">
+    <input
+      type="text"
+      id="inputField"
+      [(ngModel)]="inputValue"
+      placeholder="1x^2 + 5x^3 - 2x^2"
+      required
+      #inputControl="ngModel"
+    />
+  </div>
+  <div *ngIf="inputControl.invalid && inputControl.touched" class="error">
+    Please enter a valid polynomial.
+  </div>
+
+  <!-- Numerical and Analytical Buttons -->
+  <div class="button-group">
+    <button (click)="selectMethod('numerical')">Numerical</button>
+    <button (click)="selectMethod('analytical')">Analytical</button>
+  </div>
+
+  <!-- Dropdown for Analytical Options -->
+  <div *ngIf="showAnalyticalOptions" class="dropdown">
+    <label for="analyticalMethod">Choisissez une méthode :</label>
+    <select id="analyticalMethod" [(ngModel)]="selectedAnalyticalMethod">
+      <option value="muller">Muller</option>
+      <option value="vanda">Vanda</option>
+    </select>
+  </div>
+
+  <!-- Domain Selection -->
+  <div class="domain-selection">
+    <label>
+      <input type="radio" name="domain" value="real" [(ngModel)]="domain" /> Real
+    </label>
+    <label>
+      <input type="radio" name="domain" value="complex" [(ngModel)]="domain" /> Complex
+    </label>
+  </div>
+
+  <!-- Résolution Buttons -->
+  <div class="resolution-buttons">
+    <button (click)="onResolutionClick()">Résolution</button>
+    <button (click)="onDetailedResolutionClick()">Résolution Détaillée</button>
+  </div>
+
+  <!-- Result Textarea -->
+  <label for="textAreaField">Résultat :</label>
+  <textarea
+    id="textAreaField"
+    [(ngModel)]="textAreaValue"
+    rows="4"
+    cols="50"
+    placeholder="Les résultats apparaîtront ici..."
+    readonly
+  ></textarea>
+</div>
