@@ -5,19 +5,20 @@ import { Observable } from 'rxjs';
 export interface PolynomialRequest {
   polynomial: string;
   domain: string;
-  method: string;
+  method: string; // e.g., "numerical", "analytical", or "detailed"
 }
 
 export interface PolynomialResult {
-  roots: string[];
-  factorizedForm: string;
+  roots: string[]; // Array of roots
+  factorizedForm: string; // Factorized polynomial form
+  detailedSteps?: string; // Optional detailed steps for explanation
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PolynomialService {
-  private apiUrl =  'http://localhost:8080/api/v1/polynomial/evaluate';
+  private apiUrl = 'http://localhost:8080/api/v1/polynomial/evaluate';
 
   constructor(private http: HttpClient) {}
 

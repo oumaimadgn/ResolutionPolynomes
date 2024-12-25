@@ -12,6 +12,23 @@
   background-color: #f9f9f9;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+/* Styles for the error message */
+.error {
+  color: red; /* Set text color to red */
+  font-size: 14px; /* Optional: Adjust font size */
+  margin-top: 5px; /* Optional: Add spacing for better alignment */
+}
+
+/* Optional: General styling for the input field */
+.input-with-button input {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.input-with-button input.ng-invalid.ng-touched {
+  border-color: red; /* Highlight input border in red if invalid and touched */
+}
 
 /* Center the button groups */
 .button-group,

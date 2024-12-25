@@ -11,8 +11,8 @@
       #inputControl="ngModel"
     />
   </div>
-  <div *ngIf="inputControl.invalid && inputControl.touched" class="error">
-    Please enter a valid polynomial.
+  <div *ngIf="!inputValue && inputControl.touched" class="error">
+    Veuillez entrer un polynôme valide.
   </div>
 
   <!-- Numerical and Analytical Buttons -->
@@ -21,14 +21,18 @@
     <button (click)="selectMethod('analytical')">Analytical</button>
   </div>
 
-  <!-- Dropdown for Analytical Options -->
-  <div *ngIf="showAnalyticalOptions" class="dropdown">
-    <label for="analyticalMethod">Choisissez une méthode :</label>
-    <select id="analyticalMethod" [(ngModel)]="selectedAnalyticalMethod">
-      <option value="muller">Muller</option>
-      <option value="vanda">Vanda</option>
-    </select>
-  </div>
+<!-- Dropdown for Analytical Options -->
+<div *ngIf="showAnalyticalOptions" class="dropdown">
+  <label for="analyticalMethod">Choisissez une méthode :</label>
+  <select id="analyticalMethod" [(ngModel)]="selectedAnalyticalMethod">
+    <option value="newton">Newton</option>
+    <option value="bisection">Bisection</option>
+    <option value="bairstow">Bairstow</option>
+    <option value="muller">Müller</option>
+    <option value="fixedpoints">Fixed Points</option>
+  </select>
+</div>
+
 
   <!-- Domain Selection -->
   <div class="domain-selection">
